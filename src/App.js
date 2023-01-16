@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Home from './pages/Home/Home';
+import {useState, useEffect} from "react"
+import "./App.css"
 function App() {
+  const [popularMovie, setPopularMovie] = useState([]);
+  const [myMovies, setMyMovies] = useState([])
+  
+  useEffect(() => {
+    const storageMovie = JSON.parse(localStorage.getItem('OwnMovies')) ?? [];
+    setMyMovies([storageMovie]);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <Home
+          popularMovie={popularMovie}
+          setPopularMovie={setPopularMovie}
+          myMovies={myMovies}
+          setMyMovies={setMyMovies}
+        />
   );
 }
 
