@@ -24,6 +24,7 @@ const renderSuccessMessage = (props) => (
         disabled={props.isDisabled}
         color="#242424"
         onClick={props.onClose}
+        isForm={true}
         ></CustomButton>
     </Box>
 );
